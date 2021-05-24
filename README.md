@@ -95,5 +95,6 @@ En esta ecuación conocemos los valores de la, lb, lc y l4 que equivalen a la di
 En nuestro caso utilizamos la librería sympy.
 > import sympy as sp
 > from sympy import *
+
 Dicha librería nos permite obtener una representación más visual de las ecuaciones y utilizar funciones de resolución de sistemas de ecuaciones para encontrar las incógnitas. En nuestro caso, mediante la matriz de DH mostrada previamente:
 > nsolve(matrix, (theta1,theta2,d3,theta4),(1, 1, 1, 1))
