@@ -169,4 +169,24 @@ Los pasos que emplea son:
 
 ## Módulo de inteligencia artificial
 ### Main
-<ins> text </ins>
+Este es el núcleo del robot, donde todos los inputs son transmitidos a este módulo el cual se encargará de dar una serie de órdenes al robot. Estas órdenes pasarán por su controlador en concreto y establecerá una acción: o bien utilizará el altavoz para dar un mensaje a los jugadores o bien realizará un movimiento para alcanzar una posición calculada previamente.
+
+Este main representa el sistema del juego Póker en la modalidad Texas Holdem pero con ciertos cambios que permiten que se adapte a una partida cotidiana entre amigos.
+Por eso, cada jugador empieza con una cantidad de fichas determinadas. El sistema está organizado por “Manos” y “Rondas”. Denominamos Manos a 4 Rondas completas donde en la última se decide quién es el jugador que ha ganado la Mano y se lleva todo el dinero situado en el bote. Un Ronda es terminada cuando todos los jugadores activos de la Mano han apostado la misma cantidad de fichas. En la Ronda 0 se reparten las cartas y se realizan las apuestas iniciales, en la Ronda 1 se colocan 3 cartas centrales en la mesa y en la ronda 2 y 3 se “quema” una carta y se coloca otra junto a las centrales. “Quemar” una carta no es más que coger una carta y descartarla colocándola en una pila de descartes.
+El sistema controla la secuencia de juego y mantiene el estado de los jugadores que no se han retirado para pasar a la siguiente ronda. 
+Controla en todo momento los jugadores que están activos y los que han abandonado la mesa (no se contemplan para las siguientes Manos y no se les reparte cartas).
+
+Cuando es el turno de un jugador se le pregunta, por comandos de voz, qué acción desea realizar. Solo se ejecutan las acciones que ordena si se encuentran en el sistema. Estas acciones son típicas del juego como:
+*	<ins> “Paso”:</ins> el jugador no desea subir la apuesta.
+*	<ins> “Subo”:</ins> el jugador sube la apuesta y se reinicia el estado de los jugadores para confirmar sus nuevas acciones.
+*	<ins> “Igualo, Voy”:</ins>  el jugador sigue la apuesta máxima y coloca sus fichas en la mesa.
+*	<ins> “Me retiro”:</ins> Se retira de la Mano y no se le preguntará nada hasta la próxima Mano.
+*	<ins> “Abandono”:</ins> Abandona la mesa y ya no se le tendrá en cuenta en las próximas Manos.
+*	<ins> “Cambio a la alta/baja”:</ins> El jugador coloca sus fichas en su área de cambio según si desea cambio a valores altos o bajos. Implementado por el Módulo de Cambio.
+*	<ins> Preguntas de estado:</ins> Se le podrá preguntar al sistema información sobre el estado del juego.
+
+Cuando se ha llegado a la última Ronda de una Mano el sistema dice a los jugadores que han permanecido al final de la Mano que muestren sus cartas. 
+El sistema reconoce todas las cartas que hay en la mesa gracias al módulo de visión por computador y determina el jugador que ha ganado y la combinación de cartas con lo que lo ha hecho. 
+
+Para las siguientes Manos el sistema de juego es el mismo. Se termina el juego cuando solo queda un jugador en la mesa.
+
