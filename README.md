@@ -171,6 +171,8 @@ Los pasos que emplea son:
 *	Le añadimos brillo mediante la función increase_brightness()
 *	Realizamos una media de pixeles y vemos que color es más cercano para asociarle
 
+![2](https://github.com/EmilCarvajal/Deal-AI/blob/main/img/gif_fichas2.gif)
+
 ## Módulo de inteligencia artificial
 ### Main
 Este es el núcleo del robot, donde todos los inputs son transmitidos a este módulo el cual se encargará de dar una serie de órdenes al robot. Estas órdenes pasarán por su controlador en concreto y establecerá una acción: o bien utilizará el altavoz para dar un mensaje a los jugadores o bien realizará un movimiento para alcanzar una posición calculada previamente.
