@@ -88,4 +88,4 @@ Lo principal para poder empezar a desplazar nuestro robot hacia las posiciones d
 
 Para ello, hacemos los correspondientes cálculos en función de la diferencia entre las distancias y orientaciones de un servo-motor y otro. Al aplicar los cálculos correctos, obtenemos la siguiente matriz resultante para el cálculo de la cinemática inversa de un robot SCARA de 4 ejes:  
 
-<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/DHscara4ejes.JPG" align="center" width="600" alt="header pic"/>
+<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/DHscara4ejes.JPG" align="center" width="800" alt="header pic"/>
