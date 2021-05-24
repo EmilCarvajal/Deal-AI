@@ -6,7 +6,7 @@ También ayuda a controlar el estado de la partida.
 
 
 # Tabla de Contenidos
-* Descripción de proyecto	(#descripción-del-proyecto)
+* [Descripción de proyecto]	(#descripción-del-proyecto)
 * Esquema Hardware	
 * Arquitectura de software
 * Inteligencia Artificial 
