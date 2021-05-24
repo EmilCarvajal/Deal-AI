@@ -30,7 +30,8 @@ En cuanto a las partidas amistosas o hechas por principiantes, el robot permite 
 Para los jugadores profesionales, es ideal tener un crupier robótico, pues uno de los mayores problemas en el póker es la realización de [trampas](https://www.pokernews.com/news/2020/05/the-muck-bill-perkins-dan-cates-alleged-cheating-37330.htm) en medio de la partida. Se han dado casos donde el jugador que repartía cartas (en caso de no haber crupier) realizaba trampas para manipular las cartas que recibía cada jugador y, en otras ocasiones, un jugador estaba [compinchado con el crupier](https://www.straitstimes.com/singapore/courts-crime/rws-casino-croupier-and-patron-charged-with-cheating), por tanto este manipulaba las cartas que repartía a cada jugador.
 Además, gracias a su movilidad automatizada y adaptable a las circunstancias de la partida, DEAL_AI tiene acceso a todos los rincones de la zona de juego, así pues en mesas grandes donde un jugador debe realizar un esfurezo físico para alcanzar la zona, lo que puede suponer un problema sobretodo para gente mayor, con discapacidad o problemas físicos, el robot es capaz de alcanzar las cartas y las fichas de cada jugador, ahorrandoles este esfuerzo inecesario para disfrutar de la partida de póker.
 
-# Esquema Hardware	
+# Esquema Hardware
+El proyecto en cuestión roza los 100€ de presupuesto con componentes de media calidad. Es necesario que 3 de los servo-motores sean capaces de realizar una rotación de 360º. Cabe destacar que, cuanto mayor sea la definición de la cámara, más se reducirá la tasa de error del robot al realizar la detección de fichas y, sobretodo, de cartas: Recomendamos una cámara capaz de grabar en Full HD.
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/esquema_hardware.jpg" align="center" width="600" alt="header pic"/>
 
 # Arquitectura de software
