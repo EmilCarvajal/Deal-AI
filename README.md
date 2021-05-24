@@ -10,7 +10,7 @@ También ayuda a controlar el estado de la partida.
 
 * [Amazing contributions](#amazing-contributions)
 
-* [Esquema Hardware](#esquema-hardaware)	
+* [Esquema Hardware](#esquema-hardware)	
 
 * [Piezas 3D](#piezas-3d)
 
