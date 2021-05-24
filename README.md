@@ -10,6 +10,8 @@ También ayuda a controlar el estado de la partida.
 
 * Esquema Hardware	
 
+* Piezas 3D
+
 * Arquitectura de software
 
 * Inteligencia Artificial 
@@ -39,6 +41,14 @@ Además, gracias a su movilidad automatizada y adaptable a las circunstancias de
 El proyecto en cuestión roza los 100€ de presupuesto con componentes de media calidad. Es necesario que 3 de los servo-motores sean capaces de realizar una rotación de 360º. Cabe destacar que, cuanto mayor sea la definición de la cámara, más se reducirá la tasa de error del robot al realizar la detección de fichas y, sobretodo, de cartas: Recomendamos una cámara capaz de grabar en Full HD.
 
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/esquema_hardware.jpg" align="center" width="600" alt="header pic"/>
+
+# Piezas 3D
+Para la realización de este proyecto, se han utilizado las siguientes piezas 3D:
+<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/brazo.JPG" align="center" width="600" alt="header pic"/>
+<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/base_cartas.JPG" align="center" width="600" alt="header pic"/>
+<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/flipeador.JPG" align="center" width="600" alt="header pic"/>
+<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/mesa.JPG" align="center" width="600" alt="header pic"/>
+
 
 # Arquitectura de software
 Destacamos un total de 4 módulos imprescindibles en este proyecto los cuales, al sincronizarse, permiten al robot realizar un seguimiento eficiente de la partida de póker que se esté llevando a cabo. Dichos módulos son:
