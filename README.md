@@ -167,3 +167,6 @@ Los pasos que emplea son:
 *	Le añadimos brillo mediante la función increase_brightness()
 *	Realizamos una media de pixeles y vemos que color es más cercano para asociarle
 
+## Módulo de inteligencia artificial
+### Main
+<u>test</u>
