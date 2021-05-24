@@ -22,7 +22,9 @@ También ayuda a controlar el estado de la partida.
   * [Módulo de visión por computador](#módulo-de-visión-por-computador)  
        * [Detección de cartas](#detección-de-cartas)  
        * [Detección de fichas](#detección-de-fichas)  
-
+  * [Módulo de inteligencia artificial](#módulo-de-inteligencia-artificial)
+       * [Main](#main)
+       * [Módulo de cambio](#módulo-de-cambio)
 
 
 # Descripción del proyecto	
