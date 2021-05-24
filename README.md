@@ -16,6 +16,8 @@ También ayuda a controlar el estado de la partida.
 
 * [Arquitectura software](#arquitectura-software)
 
+* [Módulos](#módulos)
+  * [Módulo de Jugadores](#módulo-de-jugadores)
 
 # Descripción del proyecto	
 DEAL_AI es un robot que ayuda a dirigir el estado de una partida del clásico juego de cartas Poker actuando como Dealer o Croupier.
@@ -65,3 +67,15 @@ Destacamos un total de 4 módulos imprescindibles en este proyecto los cuales, a
 * Controladores: Estos relacionan los demás módulos entre si y permiten una perfecta sincronización entre ellos para poder efectuar las acciones necesarias.
 
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/esquema_software.jpg" align="center" width="600" alt="header pic"/>
+
+# Módulos
+## Módulo de jugadores
+Representa el colectivo de seres humanos que están realizando una partida con el Deal AI. Estos son los que generarán los inputs principales, los cuales permitirán determinar al robot qué algoritmo utilizar y con qué módulos operar.
+
+Para poder permitir esta interacción entre el boto y los jugadores, se han utilizado los módulos/librerías:
+* speech_recognition (para el reconocimiento de voz, así dando la oportunidad de controlar las acciones del robot). 
+> pip install SpeechRecognition
+* gTTS (para poder leer con voz sintética (text-to-speech) las respuestas dadas por el robot)
+> pip install gTTS
+* playsound (para poder reproducir sonidos y poder leer los resultados obtenidos por el gTTS).
+> pip install playsound
