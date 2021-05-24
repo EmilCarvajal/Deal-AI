@@ -72,7 +72,7 @@ Mesa semicircular utilizada en el simulador como zona de juego (no se ha de impr
 Destacamos un total de 4 módulos imprescindibles en este proyecto los cuales, al sincronizarse, permiten al robot realizar un seguimiento eficiente de la partida de póker que se esté llevando a cabo. Dichos módulos son:
 * Módulo de jugadores: Reconocimiento de comandos de voz (inputs) que permiten al robot poder avanzar en la partida o la acción a realizar en cada momento. También permite a los jugadores consultar dudas básicas que tengan.
 * Módulo de cinemática inversa: Movimiento absoluto del robot, ya sea para repartir cartas, intercambiar fichas o dar la vuelta a las cartas. Este módulo en particular también permite la reorientación correcta de las cartas.
-* Módulo de visión por computador: Reconocimiento de fichas y cartas. Es capaz de detectar el valor de las fichas estándar de póker (colores blanco, azul, verde, rojo, negro) y el valor y el palo de las cartas.
+* Módulo de visión por computador: Reconocimiento de fichas y cartas. Es capaz de detectar el valor de las fichas estándar de póker (colores blanco, azul, verde, rojo, negro) y el valor y palo de las cartas.
 * Módulo de inteligencia artificial: Representa el cerebro del robot, el cual recibe los inputs de los demás módulos y genera los outputs que necesitan los demás módulos.
 * Controladores: Estos relacionan los demás módulos entre si y permiten una perfecta sincronización entre ellos para poder efectuar las acciones necesarias.
 
