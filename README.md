@@ -86,4 +86,6 @@ En este módulo se aplicará a los servo-motores los ángulos calculados para pe
 
 Lo principal para poder empezar a desplazar nuestro robot hacia las posiciones deseadas, es calcular las ecuaciones de movimiento del robot mediante una tabla de Denavit Hartenberg (tabla de D-H).
 
-Para ello, hacemos los correspondientes cálculos en función de la diferencia entre las distancias y orientaciones de un servo-motor y otro. Al aplicar los cálculos correctos, obtenemos la siguiente matriz resultante para la cinemática inversa de un robot SCARA de 4 ejes:
+Para ello, hacemos los correspondientes cálculos en función de la diferencia entre las distancias y orientaciones de un servo-motor y otro. Al aplicar los cálculos correctos, obtenemos la siguiente matriz resultante para el cálculo de la cinemática inversa de un robot SCARA de 4 ejes:  
+
+<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/DHscara4ejes.jpg" align="center" width="600" alt="header pic"/>
