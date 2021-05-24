@@ -98,3 +98,15 @@ En nuestro caso utilizamos la librería sympy.
 
 Dicha librería nos permite obtener una representación más visual de las ecuaciones y utilizar funciones de resolución de sistemas de ecuaciones para encontrar las incógnitas. En nuestro caso, mediante la matriz de DH mostrada previamente:
 > nsolve(matrix, (theta1,theta2,d3,theta4),(1, 1, 1, 1))
+
+Para facilitar la faena de los programadores, se crean módulos estándar que serán utilizados en las funciones principales, así pues, para repartir cartas a un jugador, en vez de reescribir el código de cinemática inversa, se utiliza un módulo de movimiento estándar que es llamado por la función de mayor nivel.
+
+Con este sistema establecido, generamos las siguientes funciones de alto nivel:
+
+*	PosicionJugador(nJugadores): Se pasa como parámetro ‘nJugadores’ que corresponde al número de participantes que jugarán a póker. La función calcula y devuelve las posiciones geométricas de cada jugador y el ángulo correspondiente (entre 90 y -90 grados porque es una mesa semicircular y el robot está orientado en el ángulo 0 grados).
+
+*	DarCartaJugador(x, y, angulo): Se pasa como parámetro la posición central de un jugador. En esta función se le suma y resta a esta posición un coeficiente pequeño que determina la separación entre una carta y otra, pues en esta modalidad de póker ser reparten dos cartas a cada jugador. Una vez aplicado este cálculo, se determina de la posición central un total de 2 posiciones, que equivalen a las posiciones de cada carta. Puesto que se colocan las cartas de los jugadores en el perímetro del área, al colocar el eje rotacional en el ángulo 0 grados, las cartas quedan orientadas apuntando hacia el centro de la mesa.
+
+*	RevelarCartasCentrales(): En esta función se revelan las cartas correspondientes cuando da inicio una nueva ronda. En esta modalidad de póker, se revelan un total de 5 cartas: 3 cartas en la primera ronda, 1 carta en la segunda y 1 carta en la tercera.
+
+*	QuemarCarta(): En muchos juegos de cartas de apuestas antes de repartir cartas o de revelar cartas se realiza una acción denominada como “quemar carta” que simplemente consta en coger la primera carta del mazo y colocarla en una pila de descartes.
