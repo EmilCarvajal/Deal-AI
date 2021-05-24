@@ -8,15 +8,13 @@ También ayuda a controlar el estado de la partida.
 # Tabla de Contenidos
 * [Descripción de proyecto](#descripción-del-proyecto)
 
-* Esquema Hardware	
+* [Amazing contributions](#amazing-contributions)
 
-* Piezas 3D
+* [Esquema Hardware](#esquema-hardaware)	
 
-* Arquitectura de software
+* [Piezas 3D](#piezas-3d)
 
-* Inteligencia Artificial 
-
-* Componentes y piezas 3D extras	
+* [Arquitectura software](#arquitectura-software)
 
 
 # Descripción del proyecto	
@@ -58,7 +56,7 @@ Mesa semicircular utilizada en el simulador como zona de juego (no se ha de impr
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/mesa.JPG" align="center" width="400" alt="header pic"/>
 
 
-# Arquitectura de software
+# Arquitectura software
 Destacamos un total de 4 módulos imprescindibles en este proyecto los cuales, al sincronizarse, permiten al robot realizar un seguimiento eficiente de la partida de póker que se esté llevando a cabo. Dichos módulos son:
 * Módulo de jugadores: Reconocimiento de comandos de voz (inputs) que permiten al robot poder avanzar en la partida o la acción a realizar en cada momento. También permite a los jugadores consultar dudas básicas que tengan.
 * Módulo de cinemática inversa: Movimiento absoluto del robot, ya sea para repartir cartas, intercambiar fichas o dar la vuelta a las cartas. Este módulo en particular también permite la reorientación correcta de las cartas.
