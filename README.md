@@ -25,7 +25,9 @@ También ayuda a controlar el estado de la partida.
   * [Módulo de inteligencia artificial](#módulo-de-inteligencia-artificial)
        * [Main](#main)
        * [Módulo de cambio](#módulo-de-cambio)
+* [Vídeo](#vídeo)
 
+* [Autores](#autores)
 
 # Descripción del proyecto	
 DEAL_AI es un robot que ayuda a dirigir el estado de una partida del clásico juego de cartas Poker actuando como Dealer o Croupier.
@@ -201,3 +203,12 @@ Funciones:
 *	**cambiar_fichas_greedy(suma_fichas,mode):** Algoritmo greedy (sacado  de la asignatura de la mención “Analisis y disseny d’algortimes” ) implementado para saber qué fichas ha de devolver el robot. Implementa 2 modos para devolver fichas con valores bajos o máximos.
 
 *	**dar_Cambio(cambio, posicion):** Recibe qué fichas se han de devolver y la matriz de la posición donde el jugador dejó sus fichas de cambio.
+
+# Vídeo
+paste url here
+
+# Autores
+Emil Carvajal
+Marc Gordón
+Jofre Gómez
+Denís Montoya
