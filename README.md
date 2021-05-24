@@ -6,13 +6,13 @@ También ayuda a controlar el estado de la partida.
 
 
 # Tabla de Contenidos
-* Descripción de proyecto	
+* Descripción de proyecto	(#descripción-del-proyecto)
 * Esquema Hardware	
 * Arquitectura de software
 * Inteligencia Artificial 
 * Componentes y piezas 3D extras	
 
-# Descripción de proyecto	
+# Descripción del proyecto	
 DEAL_AI es un robot que ayuda a dirigir el estado de una partida del clásico juego de cartas Poker actuando como Dealer o Croupier.
 Básicamente consiste en un brazo mecánico de 4 ejes con la misma estructura de un robot SCARA que tiene acoplada una ventosa para poder distribuir las fichas y las cartas que están en juego. Este robot está diseñado para una mesa semicircular la cual está adaptada a su zona de trabajo.  Existe un componente situado al lado de la base el cual le permite girar las cartas simplemente soltándolas por encima del objeto. Para reconocer las fichas y las cartas tiene una cámara colocada en una torre central elevada.
 Sus principales funciones son:
