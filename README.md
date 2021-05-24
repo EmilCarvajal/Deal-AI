@@ -169,4 +169,4 @@ Los pasos que emplea son:
 
 ## Módulo de inteligencia artificial
 ### Main
-<u>test</u>
+<ins> text </ins>
