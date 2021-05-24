@@ -127,7 +127,7 @@ En este caso, ‘angulo’ es el parámetro que nos devuelve la función ‘nsol
 
 **Solución 1.2:** Los brazos robóticos con capacidad de rotación de 360 grados pueden dividirse en dos zonas de movimiento óptimo: de 0 a 180 grados y de 0 a -180 grados (que equivaldría a la zona comprendida entre 180 y 360 grados). Si el robot quiere rotar 181 grados, es más eficaz que rote -179 grados, pues llegará a la misma posición rotando menos grados. Por tanto, se determina un condicional que si detecta que la variable ‘angulo’ supera los 180 grados (que en radianes equivale a π), entonces se le resta 360 grados a ‘angulo’ (equivalente a 2π), así pues, con el mismo caso de antes, si tenemos 181 grados y le restamos 360, obtenemos -179 que sería nuestro recorrido óptimo.
 
-> if angulo > 180: // 180 grados = π radianes
+> if angulo > 180: // 180 grados = π radianes  
 >    angulo = angulo - 360 // 360 grados = 2π radianes
 
 **Solución final:** Juntando todas estas soluciones, obtenemos un módulo capaz de corregir cualquier ángulo y transformarlo en uno óptimo (si es que no lo era antes):
