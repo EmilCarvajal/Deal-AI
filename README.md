@@ -208,7 +208,7 @@ Funciones:
 paste url here
 
 # Autores
-Emil Carvajal
-Marc Gordón
-Jofre Gómez
-Denís Montoya
+Emil Carvajal  
+Marc Gordón  
+Jofre Gómez  
+Denís Montoya  
