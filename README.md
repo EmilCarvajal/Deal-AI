@@ -190,3 +190,12 @@ El sistema reconoce todas las cartas que hay en la mesa gracias al módulo de vi
 
 Para las siguientes Manos el sistema de juego es el mismo. Se termina el juego cuando solo queda un jugador en la mesa.
 
+### Módulo de cambio
+Este módulo controla el sistema de cambio de fichas. Se implementa en 3 etapas: reconocimiento de las fichas que se desean cambiar y llevarlas a la banca, tratamiento del valor total de las fichas para establecer cuantas monedas y de qué tipo ha de devolver y por último la secuencia de movimientos para colocar las fichas de cambio.
+
+Funciones:
+*	**recogerFichasMonton(area):** Por medio de un área establecida controla el módulo de visión por computador de las fichas para poder reconocerlas y luego a través de las funciones de cinemática inversa coloca esas fichas en su determinada posición de la banca.
+
+*	**cambiar_fichas_greedy(suma_fichas,mode):** Algoritmo greedy (sacado  de la asignatura de la mención “Analisis y disseny d’algortimes” ) implementado para saber qué fichas ha de devolver el robot. Implementa 2 modos para devolver fichas con valores bajos o máximos.
+
+*	**dar_Cambio(cambio, posicion):** Recibe qué fichas se han de devolver y la matriz de la posición donde el jugador dejó sus fichas de cambio.
