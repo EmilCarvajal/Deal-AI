@@ -143,3 +143,22 @@ Finalmente, para este módulo se ha decidido hacerlo junto con el proyecto final
 Se ha limitado una zona para cada jugador donde se encontrarán las cartas y fichas correspondientes de cada jugador. Se ha implementado una función llamada “**detectarCartes()**” que se le pasan por parámetro la región de la imagen del jugador recortada y otra igual pero binarizada (en blanco y negro) y la cantidad de cartas que se esperan que se detecten (2 si son la de los jugadores y 5 si son las de la máquina). Esta función se encarga de tractar las imágenes que recibe para devolver 3 vectores, el primero contiene una imagen de cada carta, el segundo una imagen del rango / valor de las cartas detectadas (A, 1, 2, 3, …, Q,K) y el tercero contiene una imagen del palo de cada carta detectada (corazón, picas, tréboles, rombos).  
 También, se ha implementado una función llamada “**detectarValors()**” que recibe las imágenes de los valores y tipos obtenidos en la función “**detectarCartes()**” y un dataset de valores de cartas y un dataset de valores de palos de Póker. En esta función se usan los dataset que se pasan por parámetro para clasificar los palos y valores de cada una de las imágenes que también recibe y devolver 2 vectores en un formato específico para posteriormente determinar quién es el ganador.  
 Para poder saber quién es el ganador, se ha implementado una función llamada “**comboJugador()**” que mediante los vectores que devuelve “**detectarValors()**” le da una puntuación al jugador sobre la mano que tiene y con qué combo (pareja, doble pareja, escalera, …) ha obtenido esa puntuación (el jugador que obtenga la mayor puntuación será el ganador).
+
+### Detección de fichas
+Para esta detección, no se utilizan las mismas zonas que para las cartas porque estas no coinciden con la zona natural donde un jugador podría dejar sus fichas (entendemos que un jugador no situaría las fichas que quiere cambiar encima de sus cartas sino un poco más alejado de ellas). Así pues, antes de que el robot las detecte, sume su valor y pueda recogerlas y llevarlas a la banca de fichas para su intercambio, lo primero que se ha realizar es determinar las áreas de cambio.  
+Se ha creado la función "**valorFichas(img_Robot)**" que se encarga de determinar el valor de una ficha. Esta recibe una imagen de la área determinada por el jugador que pide cambio de fichas. La imagen contiene varias fichas, pero al estar apiladas solo ve la que está más por encima.
+Los pasos que emplea son:
+*	Eliminación del ruido 
+*	Encuentra el área del fondo 
+*	Encuentra el área segura que pertenece a la ficha
+*	Encuentra la región desconocida (bordes)
+*	Etiquetado de las manchas que detecta
+*	Adiciona 1 a todas las etiquetas para asegurra que el fondo sea 1 en lugar de cero
+*	Se marca la región desconocida con ceros
+*	Utiliza técnica “watershed” para dividir las manchas
+*	Se binariza la imagen
+*	Buscamos los contornos las manchas restantes con la función cv2.findContours()
+*	Recortamos la mancha
+*	Le añadimos brillo mediante la función increase_brightness()
+*	Realizamos una media de pixeles y vemos que color es más cercano para asociarle
+
