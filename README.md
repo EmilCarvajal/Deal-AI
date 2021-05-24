@@ -111,22 +111,20 @@ Con este sistema establecido, generamos las siguientes funciones de alto nivel:
 
 *	QuemarCarta(): En muchos juegos de cartas de apuestas antes de repartir cartas o de revelar cartas se realiza una acción denominada como “quemar carta” que simplemente consta en coger la primera carta del mazo y colocarla en una pila de descartes.
 
-Problema 1: La función ‘nsolve’ muestra problemas para encontrar el camino óptimo que ha de recorrer el robot y, en ciertas ocasiones para llegar a la coordenada de destino realiza más vueltas de las necesarias (gira más de 360 grados).
+**Problema 1:** La función ‘nsolve’ muestra problemas para encontrar el camino óptimo que ha de recorrer el robot y, en ciertas ocasiones para llegar a la coordenada de destino realiza más vueltas de las necesarias (gira más de 360 grados).
 
-Solución 1: En el módulo del cálculo de la cinemática inversa se aplica el módulo a la solución para así obtener un resultado entre 0 y 360 grados:
+**Solución 1:** En el módulo del cálculo de la cinemática inversa se aplica el módulo a la solución para así obtener un resultado entre 0 y 360 grados:
 
-angulo=angulo % 2π
+> angulo=angulo % 2π
 
 En este caso, ‘angulo’ es el parámetro que nos devuelve la función ‘nsolve’ que equivaldría a la rotación que debería ejercer el servo-motor para alcanzar la coordenada en cuestión. 2π equivale a 360 grados en radianes.
 
+**Problema derivado 1.1:** La operación módulo (%) no tiene en cuenta el signo del ángulo, es decir, si la variable ‘angulo’ es positiva, el resultado será positivo, pero en caso de ser un valor negativo, el resultado que devuelve es positivo cosa que no nos interesa, pues hay una gran diferencia entre girar 45 y -45 grados.
 
-Problema derivado 1.1: La operación módulo (%) no tiene en cuenta el signo del ángulo, es decir, si la variable ‘angulo’ es positiva, el resultado será positivo, pero en caso de ser un valor negativo, el resultado que devuelve es positivo cosa que no nos interesa, pues hay una gran diferencia entre girar 45 y -45 grados.
+**Solución 1.1:** Puesto que no hay ninguna función que permita realizar la operación de módulo devolviendo el signo correcto, se detecta el signo antes de aplicar la operación y, en caso de ser negativo, se calcula el módulo con el valor positivo y luego se negativiza el resultado.
 
-Solución 1.1: Puesto que no hay ninguna función que permita realizar la operación de módulo devolviendo el signo correcto, se detecta el signo antes de aplicar la operación y, en caso de ser negativo, se calcula el módulo con el valor positivo y luego se negativiza el resultado.
+**Problema derivado 1.2:** La variable ‘angulo’ ahora está comprendida entre 0 y 360 grados, pero en ciertas ocasiones el brazo gira casi 360 grados para acceder a una posición cercana si se desplazara en dirección contraria. Por ejemplo, si el robot quiere situarse en el centro del 4to cuadrante (cuadrante (x, -y) entre los ángulos 270 y 360) podría acceder de manera rápida si rotara -45 grados, pero la función nos devuelve un valor de 315, por tanto el brazo rota un total de 315 grados lo cual no es óptimo.
 
-Problema derivado 1.2: La variable ‘angulo’ ahora está comprendida entre 0 y 360 grados, pero en ciertas ocasiones el brazo gira casi 360 grados para acceder a una posición cercana si se desplazara en dirección contraria. Por ejemplo, si el robot quiere situarse en el centro del 4to cuadrante (cuadrante (x, -y) entre los ángulos 270 y 360) podría acceder de manera rápida si rotara -45 grados, pero la función nos devuelve un valor de 315, por tanto el brazo rota un total de 315 grados lo cual no es óptimo.
+**Solución 1.2:** Los brazos robóticos con capacidad de rotación de 360 grados pueden dividirse en dos zonas de movimiento óptimo: de 0 a 180 grados y de 0 a -180 grados (que equivaldría a la zona comprendida entre 180 y 360 grados). Si el robot quiere rotar 181 grados, es más eficaz que rote -179 grados, pues llegará a la misma posición rotando una cantidad más pequeña de grados. Por tanto, se determina un condicional que si detecta que la variable ‘angulo’ supera los 180 grados (que en radianes equivale a π), entonces se le resta 360 grados a ‘angulo’ (equivalente a 2π), así pues, con el mismo caso de antes, si tenemos 181 grados y le restamos 360, obtenemos -179 que sería nuestro recorrido óptimo.
 
-Solución 1.2: Los brazos robóticos con capacidad de rotación de 360 grados pueden dividirse en dos zonas de movimiento óptimo: de 0 a 180 grados y de 0 a -180 grados (que equivaldría a la zona comprendida entre 180 y 360 grados). Si el robot quiere rotar 181 grados, es más eficaz que rote -179 grados, pues llegará a la misma posición rotando una cantidad más pequeña de grados. Por tanto, se determina un condicional que si detecta que la variable ‘angulo’ supera los 180 grados (que en radianes equivale a π), entonces se le resta 360 grados a ‘angulo’ (equivalente a 2π), así pues, con el mismo caso de antes, si tenemos 181 grados y le restamos 360, obtenemos -179 que sería nuestro recorrido óptimo.
-
-<span style="color:green"> Solución final </span>: Juntando todas estas soluciones, obtenemos un módulo capaz de corregir cualquier ángulo y transformarlo en uno óptimo (si es que no lo era antes):
-
+**Solución final:** Juntando todas estas soluciones, obtenemos un módulo capaz de corregir cualquier ángulo y transformarlo en uno óptimo (si es que no lo era antes):
