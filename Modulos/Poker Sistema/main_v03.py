@@ -119,6 +119,7 @@ def main():
         
     switch_dealer(txt)  
     #--- main vo01_2
+    pos_j = posicionJugadores(nJug); 
     Standby()
     ciega_pequeña = 5
     ciega_grande = 2*ciega_pequeña
@@ -267,6 +268,7 @@ def main():
                     modo = 0
                     if txt == "cambio a la alta": modo = 1
                     main_cambio(modo,actual_j)
+                    time.sleep(1); Standby()
                     
                     while txt not in opciones:
                         txt = sl.escucharJugador()
