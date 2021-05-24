@@ -125,9 +125,21 @@ En este caso, ‘angulo’ es el parámetro que nos devuelve la función ‘nsol
 
 **Problema derivado 1.2:** La variable ‘angulo’ ahora está comprendida entre 0 y 360 grados, pero en ciertas ocasiones el brazo gira casi 360 grados para acceder a una posición cercana si se desplazara en dirección contraria. Por ejemplo, si el robot quiere situarse en el centro del 4to cuadrante (cuadrante (x, -y) entre los ángulos 270 y 360) podría acceder de manera rápida si rotara -45 grados, pero la función nos devuelve un valor de 315, por tanto el brazo rota un total de 315 grados lo cual no es óptimo.
 
-**Solución 1.2:** Los brazos robóticos con capacidad de rotación de 360 grados pueden dividirse en dos zonas de movimiento óptimo: de 0 a 180 grados y de 0 a -180 grados (que equivaldría a la zona comprendida entre 180 y 360 grados). Si el robot quiere rotar 181 grados, es más eficaz que rote -179 grados, pues llegará a la misma posición rotando menos grados. Por tanto, se determina un condicional que si detecta que la variable ‘angulo’ supera los 180 grados (que en radianes equivale a π), entonces se le resta 360 grados a ‘angulo’ (equivalente a 2π), así pues, con el mismo caso de antes, si tenemos 181 grados y le restamos 360, obtenemos -179 que sería nuestro recorrido óptimo.
-
-> if angulo > 180: // 180 grados = π radianes  
->    angulo = angulo - 360 // 360 grados = 2π radianes
+**Solución 1.2:** Los brazos robóticos con capacidad de rotación de 360 grados pueden dividirse en dos zonas de movimiento óptimo: de 0 a 180 grados y de 0 a -180 grados (que equivaldría a la zona comprendida entre 180 y 360 grados). Si el robot quiere rotar 181 grados, es más eficaz que rote -179 grados, pues llegará a la misma posición rotando menos grados. Por tanto, se determina un condicional que si detecta que la variable ‘angulo’ supera los 180 grados (que en radianes equivale a π), entonces se le resta 360 grados a ‘angulo’ (equivalente a 2π), así pues, en el mismo caso de antes, si tenemos 181 grados y le restamos 360, obtenemos -179 que sería nuestro ángulo óptimo.
 
 **Solución final:** Juntando todas estas soluciones, obtenemos un módulo capaz de corregir cualquier ángulo y transformarlo en uno óptimo (si es que no lo era antes):
+
+Cuanto a los módulos de bajo nivel, mencionamos algunos que creemos que son interesantes mencionar:
+* **CogerItem():** Activa la válvula de vacío.
+* **CogerCarta():** Automatiza la acción de coger una carta de la baraja (utilizando la función CogerItem()).
+* **DejarItem():** Desactiva la válvula de vacío.
+
+## Módulo de visión por computador:
+Entendemos este módulo como el que recoge la información de la situación en la zona de juego. Dicha información se utilizará posteriormente para poder establecer las posiciones de los elementos a manipular por el robot (cartas y fichas) y para que pueda determinar la situación en tiempo real de la partida (reconocimiento de las cartas).
+
+Finalmente, para este módulo se ha decidido hacerlo junto con el proyecto final de la asignatura “Visión por Computador”. El robot será capaz de detectar tanto cartas como fichas. Además de detectarlos podrá saber sus valores concretos.
+
+### Detección de cartas
+Se ha limitado una zona para cada jugador donde se encontrarán las cartas y fichas correspondientes de cada jugador. Se ha implementado una función llamada “**detectarCartes()**” que se le pasan por parámetro la región de la imagen del jugador recortada y otra igual pero binarizada (en blanco y negro) y la cantidad de cartas que se esperan que se detecten (2 si son la de los jugadores y 5 si son las de la máquina). Esta función se encarga de tractar las imágenes que recibe para devolver 3 vectores, el primero contiene una imagen de cada carta, el segundo una imagen del rango / valor de las cartas detectadas (A, 1, 2, 3, …, Q,K) y el tercero contiene una imagen del palo de cada carta detectada (corazón, picas, tréboles, rombos).  
+También, se ha implementado una función llamada “**detectarValors()**” que recibe las imágenes de los valores y tipos obtenidos en la función “**detectarCartes()**” y un dataset de valores de cartas y un dataset de valores de palos de Póker. En esta función se usan los dataset que se pasan por parámetro para clasificar los palos y valores de cada una de las imágenes que también recibe y devolver 2 vectores en un formato específico para posteriormente determinar quién es el ganador.  
+Para poder saber quién es el ganador, se ha implementado una función llamada “**comboJugador()**” que mediante los vectores que devuelve “**detectarValors()**” le da una puntuación al jugador sobre la mano que tiene y con qué combo (pareja, doble pareja, escalera, …) ha obtenido esa puntuación (el jugador que obtenga la mayor puntuación será el ganador).
