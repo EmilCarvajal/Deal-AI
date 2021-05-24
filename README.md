@@ -20,8 +20,8 @@ También ayuda a controlar el estado de la partida.
   * [Módulo de Jugadores](#módulo-de-jugadores)
   * [Módulo de cinemática inversa](#módulo-de-cinemática-inversa)
   * [Módulo de visión por computador](#módulo-de-visión-por-computador)
-   * [Detección de cartas](#detección-de-cartas)
-   * [Detección de fichas](#detección-de-fichas)
+        * [Detección de cartas](#detección-de-cartas)
+        * [Detección de fichas](#detección-de-fichas)
 
 # Descripción del proyecto	
 DEAL_AI es un robot que ayuda a dirigir el estado de una partida del clásico juego de cartas Poker actuando como Dealer o Croupier.
