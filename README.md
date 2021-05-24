@@ -18,6 +18,7 @@ También ayuda a controlar el estado de la partida.
 
 * [Módulos](#módulos)
   * [Módulo de Jugadores](#módulo-de-jugadores)
+  * [Módulo de cinemática inversa](#módulo-de-cinemática-inversa)
 
 # Descripción del proyecto	
 DEAL_AI es un robot que ayuda a dirigir el estado de una partida del clásico juego de cartas Poker actuando como Dealer o Croupier.
@@ -79,3 +80,10 @@ Para poder permitir esta interacción entre el boto y los jugadores, se han util
 > pip install gTTS
 * playsound (para poder reproducir sonidos y poder leer los resultados obtenidos por el gTTS).
 > pip install playsound
+
+## Módulo de cinemática inversa
+En este módulo se aplicará a los servo-motores los ángulos calculados para permitir al robot alcanzar el objeto o la posición deseada rotando sus ejes principales. Básicamente tras haber establecido la posición (módulo IA) el controlador ordenará a los componentes hardware la cinemática a realizar.
+
+Lo principal para poder empezar a desplazar nuestro robot hacia las posiciones deseadas, es calcular las ecuaciones de movimiento del robot mediante una tabla de Denavit Hartenberg (tabla de D-H).
+
+Para ello, hacemos los correspondientes cálculos en función de la diferencia entre las distancias y orientaciones de un servo-motor y otro. Al aplicar los cálculos correctos, obtenemos la siguiente matriz resultante para la cinemática inversa de un robot SCARA de 4 ejes:
