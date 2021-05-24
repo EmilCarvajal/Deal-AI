@@ -34,12 +34,13 @@ DEAL_AI es un robot que ayuda a dirigir el estado de una partida del clásico ju
 Básicamente consiste en un brazo mecánico de 4 ejes con la misma estructura de un robot SCARA que tiene acoplada una ventosa para poder distribuir las fichas y las cartas que están en juego. Este robot está diseñado para una mesa semicircular la cual está adaptada a su zona de trabajo.  Existe un componente situado al lado de la base el cual le permite girar las cartas simplemente soltándolas por encima del objeto. Para reconocer las fichas y las cartas tiene una cámara colocada en una torre central elevada.
 Sus principales funciones son:
 *	Funciones de Dealer: 
- *	Flop (mostrar las 3 cartas)
- * Mostar las 5 cartas
- * Voltear cartas
-*	Repartir cartas 
+       *	Flop (mostrar las 3 cartas)
+       * Mostar las 5 cartas
+       * Voltear cartas
+       *	Repartir cartas 
 *	Intercambio de fichas mediante IA
 *	Realizar movimientos y responder preguntas (órdenes captadas por reconocimiento de voz)
+* Declarar ganador por medio de visión por computador.
 
 # Amazing contributions
 Gracias a su adaptación para permitir cualquier número de jugadores, DEAL_AI puede ser utilizado en partidas amateurs o en partidas profesionales.
@@ -189,7 +190,7 @@ Cuando es el turno de un jugador se le pregunta, por comandos de voz, qué acci�
 *	<ins> “Me retiro”:</ins> Se retira de la Mano y no se le preguntará nada hasta la próxima Mano.
 *	<ins> “Abandono”:</ins> Abandona la mesa y ya no se le tendrá en cuenta en las próximas Manos.
 *	<ins> “Cambio a la alta/baja”:</ins> El jugador coloca sus fichas en su área de cambio según si desea cambio a valores altos o bajos. Implementado por el Módulo de Cambio.
-*	<ins> Preguntas de estado:</ins> Se le podrá preguntar al sistema información sobre el estado del juego.
+*	<ins> Preguntas de estado:</ins>  Se le puede preguntar al sistema información sobre el estado del juego. Ej: “Dealer actual?”, “Ronda actual?, “Quién es la ciega grande?”, “Apuesta máxima?”… 
 
 Cuando se ha llegado a la última Ronda de una Mano el sistema dice a los jugadores que han permanecido al final de la Mano que muestren sus cartas. 
 El sistema reconoce todas las cartas que hay en la mesa gracias al módulo de visión por computador y determina el jugador que ha ganado y la combinación de cartas con lo que lo ha hecho. 
