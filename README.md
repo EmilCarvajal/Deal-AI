@@ -93,7 +93,7 @@ Para ello, hacemos los correspondientes cálculos en función de la diferencia e
 En esta ecuación conocemos los valores de la, lb, lc y l4 que equivalen a la distancia de cada brazo o link. Los datos que desconocemos son ϑ1, ϑ2, ϑ4 y d3, que equivaldrían a los ángulos de rotación de los servo-motores 1, 2 y 4 (los cuales son rotacionales) y la altura a la que está situada el manipulador (controlado por el servo-motor 3 que es de tipo prismático). Para saber qué rotación hay que aplicar a cada eje, utilizamos la última columna para realizar un sistema de ecuaciones que, al resolverlo, nos determinará las rotaciones a aplicar en cada eje. No obstante, si queremos saber la rotación correspondiente para punto geométrico (x, y, z), debemos restar estos valores a su ecuación correspondiente (la primera fila corresponde a la 'x', la segunda a la 'y' y la tercera a la 'z').
 
 En nuestro caso utilizamos la librería sympy.
-> import sympy as sp
+> import sympy as sp  
 > from sympy import *
 
 Dicha librería nos permite obtener una representación más visual de las ecuaciones y utilizar funciones de resolución de sistemas de ecuaciones para encontrar las incógnitas. En nuestro caso, mediante la matriz de DH mostrada previamente:
