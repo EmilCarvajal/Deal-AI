@@ -79,6 +79,7 @@ Para la realización de este proyecto, se han utilizado las siguientes piezas 3D
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/mesa.JPG" align="center" width="400" alt="header pic"/>
 <br>
 <br>
+Todas y cada una de estas piezas se encuentran en la carpeta **Objetos STL** en este mismo repositorio. No obstante, las dimensiones de los objetos NO SON CORRECTAS, simplemente conservan las buenas proporciones y relaciones de tamaño, pero en caso de querer utilizarlos se ha de tener en cuenta que se han de escalar al tamaño deseado. En nuestro caso, al utilizar un simulador y trasladarlo todo a centímetros (por temas de capacidad de ejecución y limitación de los própios ordenadores), se han escalado la gran mayoría de piezas a un ratio de entre 0.001 y 0.01 de su tamaño original.
 
 # Arquitectura software
 Destacamos un total de 4 módulos imprescindibles en este proyecto los cuales, al sincronizarse, permiten al robot realizar un seguimiento eficiente de la partida de póker que se esté llevando a cabo. Dichos módulos son:
