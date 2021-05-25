@@ -117,6 +117,8 @@ Con este sistema establecido, generamos las siguientes funciones de alto nivel:
 
 *	DarCartaJugador(x, y, angulo): Se pasa como parámetro la posición central de un jugador. En esta función se le suma y resta a esta posición un coeficiente pequeño que determina la separación entre una carta y otra, pues en esta modalidad de póker ser reparten dos cartas a cada jugador. Una vez aplicado este cálculo, se determina de la posición central un total de 2 posiciones, que equivalen a las posiciones de cada carta. Puesto que se colocan las cartas de los jugadores en el perímetro del área, al colocar el eje rotacional en el ángulo 0 grados, las cartas quedan orientadas apuntando hacia el centro de la mesa.
 
+<img src="https://github.com/EmilCarvajal/Deal-AI/blob/main/img/gifdarCartas.gif" align="right" width="300" alt="header pic"/>
+
 *	RevelarCartasCentrales(): En esta función se revelan las cartas correspondientes cuando da inicio una nueva ronda. En esta modalidad de póker, se revelan un total de 5 cartas: 3 cartas en la primera ronda, 1 carta en la segunda y 1 carta en la tercera.
 
 *	QuemarCarta(): En muchos juegos de cartas de apuestas antes de repartir cartas o de revelar cartas se realiza una acción denominada como “quemar carta” que simplemente consta en coger la primera carta del mazo y colocarla en una pila de descartes.
