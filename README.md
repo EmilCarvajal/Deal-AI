@@ -1,5 +1,5 @@
 # [ROBOTICA] Deal-AI
-<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/foto_dealAI.JPG" align="right" width="400" alt="header pic"/>
+<img src="https://github.com/emilsj2/Deal-AI/blob/main/img/foto_dealAI.JPG" align="right" width="300" alt="header pic"/>
 
 Brazo mecánico que  permite actuar como  Dealer o Croupier en el juego del  Poker, concretamente la modalidad de Texas Holdem.
 También ayuda a controlar el estado de la partida.
