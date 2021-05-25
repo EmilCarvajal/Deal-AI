@@ -56,16 +56,20 @@ El proyecto en cuestión roza los 100€ de presupuesto con componentes de media
 # Piezas 3D
 Para la realización de este proyecto, se han utilizado las siguientes piezas 3D:
 
-Componentes unidos del brazo robótico (total de 4 piezas por separado).  
+**Componentes unidos del brazo robótico (total de 4 piezas por separado). ** 
+<br>
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/brazo.JPG" align="center" width="400" alt="header pic"/>
 
-Base personalizada para colocar la baraja de cartas.  
+**Base personalizada para colocar la baraja de cartas.**  
+<br>
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/base_cartas.JPG" align="center" width="400" alt="header pic"/>
 
-Pieza que permite al robot voltear las cartas.  
+**Pieza que permite al robot voltear las cartas. ** 
+<br>
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/flipeador.JPG" align="center" width="400" alt="header pic"/>
 
-Mesa semicircular utilizada en el simulador como zona de juego (no se ha de imprimir en caso de realizarlo en la vida real).  
+**Mesa semicircular utilizada en el simulador como zona de juego (no se ha de imprimir en caso de realizarlo en la vida real). **
+<br>
 <img src="https://github.com/emilsj2/Deal-AI/blob/main/img/mesa.JPG" align="center" width="400" alt="header pic"/>
 
 
