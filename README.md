@@ -156,7 +156,7 @@ Se ha limitado una zona para cada jugador donde se encontrarán las cartas y fic
 También, se ha implementado una función llamada “**detectarValors()**” que recibe las imágenes de los valores y tipos obtenidos en la función “**detectarCartes()**” y un dataset de valores de cartas y un dataset de valores de palos de Póker. En esta función se usan los dataset que se pasan por parámetro para clasificar los palos y valores de cada una de las imágenes que también recibe y devolver 2 vectores en un formato específico para posteriormente determinar quién es el ganador.  
 Para poder saber quién es el ganador, se ha implementado una función llamada “**comboJugador()**” que mediante los vectores que devuelve “**detectarValors()**” le da una puntuación al jugador sobre la mano que tiene y con qué combo (pareja, doble pareja, escalera, …) ha obtenido esa puntuación (el jugador que obtenga la mayor puntuación será el ganador).
 
-<img src="https://github.com/EmilCarvajal/Deal-AI/blob/main/img/Card.gif" align="center" width="600" alt="header pic"/>
+<img src="https://github.com/EmilCarvajal/Deal-AI/blob/main/img/Card.gif" align="center" width="300" alt="header pic"/>
 
 ### Detección de fichas
 Para esta detección, no se utilizan las mismas zonas que para las cartas porque estas no coinciden con la zona natural donde un jugador podría dejar sus fichas (entendemos que un jugador no situaría las fichas que quiere cambiar encima de sus cartas sino un poco más alejado de ellas). Así pues, antes de que el robot las detecte, sume su valor y pueda recogerlas y llevarlas a la banca de fichas para su intercambio, lo primero que se ha realizar es determinar las áreas de cambio.  
