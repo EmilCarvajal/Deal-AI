@@ -17,8 +17,8 @@ También ayuda a controlar el estado de la partida.
 * [Arquitectura software](#arquitectura-software)
 
 * [Módulos](#módulos)
-  * [Módulo de Jugadores](#módulo-de-jugadores)  
-  * [Módulo de cinemática inversa](#módulo-de-cinemática-inversa)  
+  * [Módulo de Jugadores](#módulo-de-jugadores)  <br>
+  * [Módulo de cinemática inversa](#módulo-de-cinemática-inversa)  <br>
   * [Módulo de visión por computador](#módulo-de-visión-por-computador)  <br> 
        * [Detección de cartas](#detección-de-cartas)  <br>
        * [Detección de fichas](#detección-de-fichas)  <br>
