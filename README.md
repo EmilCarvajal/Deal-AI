@@ -124,15 +124,17 @@ Para facilitar la faena de los programadores, se crean módulos estándar que se
 
 Con este sistema establecido, generamos las siguientes funciones de alto nivel:
 
-*	PosicionJugador(nJugadores): Se pasa como parámetro ‘nJugadores’ que corresponde al número de participantes que jugarán a póker. La función calcula y devuelve las posiciones geométricas de cada jugador y el ángulo correspondiente (entre 90 y -90 grados porque es una mesa semicircular y el robot está orientado en el ángulo 0 grados).
+*	**PosicionJugador(nJugadores):** Se pasa como parámetro ‘nJugadores’ que corresponde al número de participantes que jugarán a póker. La función calcula y devuelve las posiciones geométricas de cada jugador y el ángulo correspondiente (entre 90 y -90 grados porque es una mesa semicircular y el robot está orientado en el ángulo 0 grados).
 
-*	DarCartaJugador(x, y, angulo): Se pasa como parámetro la posición central de un jugador. En esta función se le suma y resta a esta posición un coeficiente pequeño que determina la separación entre una carta y otra, pues en esta modalidad de póker ser reparten dos cartas a cada jugador. Una vez aplicado este cálculo, se determina de la posición central un total de 2 posiciones, que equivalen a las posiciones de cada carta. Puesto que se colocan las cartas de los jugadores en el perímetro del área, al colocar el eje rotacional en el ángulo 0 grados, las cartas quedan orientadas apuntando hacia el centro de la mesa.
+*	**DarCartaJugador(x, y, angulo):** Se pasa como parámetro la posición central de un jugador. En esta función se le suma y resta a esta posición un coeficiente pequeño que determina la separación entre una carta y otra, pues en esta modalidad de póker ser reparten dos cartas a cada jugador. Una vez aplicado este cálculo, se determina de la posición central un total de 2 posiciones, que equivalen a las posiciones de cada carta. Puesto que se colocan las cartas de los jugadores en el perímetro del área, al colocar el eje rotacional en el ángulo 0 grados, las cartas quedan orientadas apuntando hacia el centro de la mesa.
 
 <img src="https://github.com/EmilCarvajal/Deal-AI/blob/main/img/gifdarCartas.gif" align="right" width="300" alt="header pic"/>
 
-*	RevelarCartasCentrales(): En esta función se revelan las cartas correspondientes cuando da inicio una nueva ronda. En esta modalidad de póker, se revelan un total de 5 cartas: 3 cartas en la primera ronda, 1 carta en la segunda y 1 carta en la tercera.
+*	**RevelarCartasCentrales():** En esta función se revelan las cartas correspondientes cuando da inicio una nueva ronda. En esta modalidad de póker, se revelan un total de 5 cartas: 3 cartas en la primera ronda, 1 carta en la segunda y 1 carta en la tercera.
 
-*	QuemarCarta(): En muchos juegos de cartas de apuestas antes de repartir cartas o de revelar cartas se realiza una acción denominada como “quemar carta” que simplemente consta en coger la primera carta del mazo y colocarla en una pila de descartes.
+* **Ir_a_flipeador():** Tras analizar y probar varios modelos de piezas 3D que permitan voltear una carta automáticamente, hemos encontrado la pieza necesaria para lograrlo. Tras situar la pieza en un lugar específico de la zona de juego, el brazo robótico únicamente debe colocar encima de la pieza la carta que desea voltear, rotando dicha carta para que quepa en la entrada y se voltee automáticamente, deslizándose hasta una pequeña zona donde se recogerá la carta.
+<img src="https://github.com/EmilCarvajal/Deal-AI/blob/main/img/gifFlipeador.gif" align="right" width="300" alt="header pic"/>
+*	**QuemarCarta():** En muchos juegos de cartas de apuestas antes de repartir cartas o de revelar cartas se realiza una acción denominada como “quemar carta” que simplemente consta en coger la primera carta del mazo y colocarla en una pila de descartes.
 
 **Problema 1:** La función ‘nsolve’ muestra problemas para encontrar el camino óptimo que ha de recorrer el robot y, en ciertas ocasiones para llegar a la coordenada de destino realiza más vueltas de las necesarias (gira más de 360 grados).
 
