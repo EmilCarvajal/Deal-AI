@@ -230,7 +230,7 @@ Funciones:
 paste url here
 
 # Autores
-Emil Carvajal  
-Marc Gordón  
-Jofre Gómez  
-Denís Montoya  
+Emil Carvajal - 1529821   
+Marc Gordón - 1457460   
+Jofre Gómez - 1526889   
+Denís Montoya - 1527418   
