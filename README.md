@@ -132,8 +132,9 @@ Con este sistema establecido, generamos las siguientes funciones de alto nivel:
 
 *	**RevelarCartasCentrales():** En esta función se revelan las cartas correspondientes cuando da inicio una nueva ronda. En esta modalidad de póker, se revelan un total de 5 cartas: 3 cartas en la primera ronda, 1 carta en la segunda y 1 carta en la tercera.
 
-* **Ir_a_flipeador():** Tras analizar y probar varios modelos de piezas 3D que permitan voltear una carta automáticamente, hemos encontrado la pieza necesaria para lograrlo. Tras situar la pieza en un lugar específico de la zona de juego, el brazo robótico únicamente debe colocar encima de la pieza la carta que desea voltear, rotando dicha carta para que quepa en la entrada y se voltee automáticamente, deslizándose hasta una pequeña zona donde se recogerá la carta.
 <img src="https://github.com/EmilCarvajal/Deal-AI/blob/main/img/gifFlipeador.gif" align="right" width="200" alt="header pic"/>
+
+* **Ir_a_flipeador():** Tras analizar y probar varios modelos de piezas 3D que permitan voltear una carta automáticamente, hemos encontrado la pieza necesaria para lograrlo. Tras situar la pieza en un lugar específico de la zona de juego, el brazo robótico únicamente debe colocar encima de la pieza la carta que desea voltear, rotando dicha carta para que quepa en la entrada y se voltee automáticamente, deslizándose hasta una pequeña zona donde se recogerá la carta.
 
 *	**QuemarCarta():** En muchos juegos de cartas de apuestas antes de repartir cartas o de revelar cartas se realiza una acción denominada como “quemar carta” que simplemente consta en coger la primera carta del mazo y colocarla en una pila de descartes.
 
