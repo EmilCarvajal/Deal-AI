@@ -19,12 +19,12 @@ También ayuda a controlar el estado de la partida.
 * [Módulos](#módulos)
   * [Módulo de Jugadores](#módulo-de-jugadores)  
   * [Módulo de cinemática inversa](#módulo-de-cinemática-inversa)  
-  * [Módulo de visión por computador](#módulo-de-visión-por-computador)  
-       * [Detección de cartas](#detección-de-cartas)  
-       * [Detección de fichas](#detección-de-fichas)  
-  * [Módulo de inteligencia artificial](#módulo-de-inteligencia-artificial)
-       * [Main](#main)
-       * [Módulo de cambio](#módulo-de-cambio)
+  * [Módulo de visión por computador](#módulo-de-visión-por-computador)  <br> 
+       * [Detección de cartas](#detección-de-cartas)  <br>
+       * [Detección de fichas](#detección-de-fichas)  <br>
+  * [Módulo de inteligencia artificial](#módulo-de-inteligencia-artificial) <br>
+       * [Main](#main) <br>
+       * [Módulo de cambio](#módulo-de-cambio) <br>
 * [Vídeo](#vídeo)
 
 * [Autores](#autores)
