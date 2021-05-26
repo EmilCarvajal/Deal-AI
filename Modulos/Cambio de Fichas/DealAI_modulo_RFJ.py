@@ -75,7 +75,7 @@ def recogerFichasMonton(area):   #Recoge las fichas de 1 jugador y devuelve el V
         y = N(0.5-yi*0.5/512,3)
         print(xi,yi)
         print(x,y)
-        subir_brazo(0.13)
+        subir_brazo(0.08)
         if co ==0:
             print("darCartaIzquierda")
             q = darCartaDerecha(-x, y)
@@ -101,15 +101,15 @@ def recogerFichasMonton(area):   #Recoge las fichas de 1 jugador y devuelve el V
             q = darCartaDerecha(x, y) #print(x,y)
         subir_brazo(0.13)
         if co==1:
-            time.sleep(5)
+            time.sleep(8)
         else:
             time.sleep(8)
-        bajar_brazo(-dist_object())
-        time.sleep(4)
+        bajar_brazo(-dist_object()+0.084)
+        time.sleep(2)
         CogerItem(False)
         time.sleep(1)
         
-        subir_brazo(0.13)
+        subir_brazo(0.0)
         time.sleep(1)
         count_c = 0
         if color_chip == "red":
@@ -138,17 +138,24 @@ def recogerFichasMonton(area):   #Recoge las fichas de 1 jugador y devuelve el V
             fichasTotales_Banco[0]+=1
             Suma_valor_fiches = Suma_valor_fiches+5
             
-        subir_brazo(0.13)  
+        #subir_brazo(0.13) 
+        subir_brazo(0.0)
         time.sleep(3)
         f = (count_c+1) * 0.005
+        print(count_c)
         time.sleep(2)
-        bajar_brazo(-(0.089-f))
-        bajar_brazo(-(0.089-f))
-        time.sleep(3)
+        #bajar_brazo(-(0.083-f))
+        #bajar_brazo(-(0.083-0.050))
+        #bajar_brazo(-(0.035))
+        #bajar_brazo(-(0.035))
+        #bajar_brazo(-(0.035))
+        #bajar_brazo(0.0)
+        bajar_brazo(-(0.090-f))
+        time.sleep(5)
         DejarItem()
-        time.sleep(2)
-        subir_brazo(0.13)
-        
+        time.sleep(3)
+     
+        subir_brazo(0.0)
         img_Robot = get_image()
         color_chip, cx, cy = valorFichas(img_Robot[f_inicial:f_final,c_inicial:c_final])
         

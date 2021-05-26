@@ -60,27 +60,29 @@ def dar_Cambio(cambio, q): # q es matriz con posiciones donde deja el robot
             
             fichasTotales_Banco[0]-=1
         #coge ficha
-        subir_brazo(0.13)
-        time.sleep(2)
-        bajar_brazo(-dist_object())
+        subir_brazo(0.00)
         time.sleep(3)
+        #bajar_brazo(-dist_object()+0.087)
+        bajar_brazo(-dist_object()+0.01)
+        #bajar_brazo(-dist_object()+0.015)
+        time.sleep(4)
         CogerItem(False)
         time.sleep(2)
         
         #deja ficha
-        subir_brazo(0.13) 
-        time.sleep(1)
-        mov_brazo(q)
-        subir_brazo(0.13)
-        time.sleep(1)
-        f = (monton) * 0.005
-        time.sleep(1)
-        bajar_brazo(-(0.089-f))
-        bajar_brazo(-(0.089-f))
+        subir_brazo(0.0) 
         time.sleep(2)
+        mov_brazo(q)
+
+        time.sleep(4)
+        f = (monton) * 0.006
+        time.sleep(2)
+        bajar_brazo(-(0.084-f))
+        #bajar_brazo(-(0.089-f))
+        time.sleep(3)
         DejarItem()
-        time.sleep(1)
-        subir_brazo(0.13)
+        time.sleep(2)
+        subir_brazo(0.00)
         
         monton+=1
     
