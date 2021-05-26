@@ -228,7 +228,8 @@ Funciones:
 *	**dar_Cambio(cambio, posicion):** Recibe qué fichas se han de devolver y la matriz de la posición donde el jugador dejó sus fichas de cambio.
 
 # Vídeo
-paste url here
+Haz click para ver el video:
+[![Watch the video](https://github.com/EmilCarvajal/Deal-AI/blob/main/img/Simulacion.JPG)](https://www.youtube.com/watch?v=U3uC58L_5Mo&ab_channel=Emilsj2)
 
 # Autores
 Emil Carvajal - 1529821   
