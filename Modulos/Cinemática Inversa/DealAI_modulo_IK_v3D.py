@@ -248,8 +248,9 @@ def CogerItem(flip):
     if detectionState==True:
         sensor_val=np.linalg.norm(detectedPoint)
         print("distacia al objeto: ",sensor_val)
-        if flip == True:
-            sim.simxSetObjectOrientation(clientID, detectedObjectHandle, detectedObjectHandle, [0,0,(66 + 69/4)*2], sim.simx_opmode_oneshot)
+        #if flip == True:
+          #  return 0 
+            #detectedObjectHandle#sim.simxSetObjectOrientation(clientID, detectedObjectHandle, detectedObjectHandle, [0,0,(66 + 69/4)*2], sim.simx_opmode_oneshot)
         #setEffector(1)
         if(sim.simxSetObjectParent(clientID, detectedObjectHandle, suction, True, sim.simx_opmode_oneshot)):
             print("Cogido")
@@ -271,9 +272,11 @@ def DejarItem():
         if(sim.simxSetObjectParent(clientID, detectedObjectHandle, -1, True, sim.simx_opmode_oneshot)):
             print("Dejado")
         else:
-            print("No se ha podido dejar")
+            print("NS ha podido dejar")
     else:
         print("No ha detectado objeto")
+        
+    return detectedObjectHandle
 
 
 # In[54]:
@@ -321,7 +324,7 @@ def CogerFichaAzul():
     
     retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0], sim.simx_opmode_oneshot) 
     retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
 
 
 # In[56]:
@@ -345,7 +348,7 @@ def CogerFichaVerde():
     
     retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0], sim.simx_opmode_oneshot) 
     retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
 
 
 # In[57]:
@@ -369,7 +372,7 @@ def CogerFichaNegra():
     
     retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0], sim.simx_opmode_oneshot) 
     retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
 
 
 # In[58]:
@@ -392,7 +395,7 @@ def CogerFichaRoja():
     
     retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0], sim.simx_opmode_oneshot) 
     retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
 
 
 # In[59]:
@@ -416,12 +419,43 @@ def CogerFichaBlanca():
     
     retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0], sim.simx_opmode_oneshot) 
     retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
 
 
 
-
-
+def CogerCarta(flip):
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, 0.08, sim.simx_opmode_oneshot)
+    x = 0.275
+    y = 0.05
+    
+    #z = 0.2
+    
+    eq1 = 0.2 * cos(theta1) + 0.2 * cos(theta1 + theta2) - x
+    eq2 = 0.2 * sin(theta1) + 0.2 * sin(theta1 + theta2) - y
+    #eq3 = 0.105 - d3 - z
+    try:
+        qFinal=nsolve((eq1,eq2),(theta1,theta2),(1,1.5),prec=5)
+        print('Solución encontrada')
+        print(qFinal)
+    except:
+        print('No se encuentra solución')
+        qFinal=[0,0]
+    
+    global cartasReveladas
+    retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0], sim.simx_opmode_oneshot) 
+    retCode = sim.simxSetJointTargetPosition(clientID, joint2, -qFinal[1], sim.simx_opmode_oneshot)
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint3, 0.08, sim.simx_opmode_oneshot)
+    time.sleep(3)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint4, 37*np.pi/180, sim.simx_opmode_oneshot)
+    time.sleep(2)
+    print(cartasReveladas)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0543 -(0.0007 * cartasReveladas), sim.simx_opmode_oneshot)
+    cartasReveladas = cartasReveladas + 1
+    time.sleep(2)
+    CogerItem(flip)
+    time.sleep(2)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, 0.08, sim.simx_opmode_oneshot)
+"""
 def CogerCarta(flip):
     retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
     x = 0.275
@@ -447,13 +481,13 @@ def CogerCarta(flip):
     retCode = sim.simxSetJointTargetPosition(clientID, joint4, 37*np.pi/180, sim.simx_opmode_oneshot)
     time.sleep(2) 
     print(cartasReveladas)
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0543 -(0.0007 * cartasReveladas), sim.simx_opmode_oneshot)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0543 -(0.0007 * cartasReveladas)-0.0828, sim.simx_opmode_oneshot)
     cartasReveladas = cartasReveladas + 1
     time.sleep(2)
     CogerItem(flip)
     time.sleep(2) #subir 
     retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
-
+"""
 """
 # In[]
 # COLOCAR CARTAS CENTRALES --------------- 
@@ -749,10 +783,157 @@ def quemarCarta():
     retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
     time.sleep(2) 
     
-def Colocar3CartasCentrales():
+def ir_a_flipeador():
+    x = 0.388#0.383
+    y = -0.018#0.007
+    z = 0.7926
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3,0.07926, sim.simx_opmode_oneshot)
+
+    eq1 = 0.2 * cos(theta1) + 0.2 * cos(theta1 + theta2) - y
+    eq2 = 0.2 * sin(theta1) + 0.2 * sin(theta1 + theta2) + x
+    eq3 = 0.105 - d3 - z
+    try:
+        qFinal=nsolve((eq1,eq2,eq3),(theta1,theta2,d3),(1,1,1),prec=5)
+        qFinal[0] = qFinal[0] % (2*np.pi)
+        qFinal[1] = qFinal[1] % (2*np.pi)
+        for i in range(2):
+            if abs(qFinal[i]) > np.pi:
+                if qFinal[i] < 0:
+                    qFinal[i] = qFinal[i] * (-1)
+                    qFinal[i] = qFinal[i] % (2*np.pi)
+                    if qFinal[i] > np.pi:
+                        qFinal[i] = qFinal[i] - (2*np.pi)
+                    qFinal[i] = qFinal[i] * (-1)
+                else:
+                    qFinal[i] = qFinal[i] % (2*np.pi)
+                    if qFinal[i] > np.pi:
+                        qFinal[i] = qFinal[i] - (2*np.pi)
+        print('Solución encontrada')
+        print(qFinal)
+    except:
+        print('No se encuentra solución')
+        qFinal=[0,0,0]
+        
+    time.sleep(4)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0] , sim.simx_opmode_oneshot) 
+    retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
+    time.sleep(4)
+    
+    retCode = sim.simxSetJointTargetPosition(clientID, joint4, (80)*np.pi/180, sim.simx_opmode_oneshot)
+    time.sleep(4)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3,0.076, sim.simx_opmode_oneshot)
+    time.sleep(3)
+    handle = DejarItem()
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, 0.08, sim.simx_opmode_oneshot)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint2, -10*np.pi/180, sim.simx_opmode_oneshot)
+    #time.sleep(1)
+    flip_carta(handle)
+    time.sleep(2)
+    #time.sleep(1)
+    
+    #---- ir a BANDEJA ---
+    
+    x = 0.383
+    y = 0.082
+    z = 0.6618
+    
+    eq1 = 0.2 * cos(theta1) + 0.2 * cos(theta1 + theta2) - y
+    eq2 = 0.2 * sin(theta1) + 0.2 * sin(theta1 + theta2) + x
+    eq3 = 0.105 - d3 - z
+    try:
+        qFinal=nsolve((eq1,eq2,eq3),(theta1,theta2,d3),(1,1,1),prec=5)
+        qFinal[0] = qFinal[0] % (2*np.pi)
+        qFinal[1] = qFinal[1] % (2*np.pi)
+        for i in range(2):
+            if abs(qFinal[i]) > np.pi:
+                if qFinal[i] < 0:
+                    qFinal[i] = qFinal[i] * (-1)
+                    qFinal[i] = qFinal[i] % (2*np.pi)
+                    if qFinal[i] > np.pi:
+                        qFinal[i] = qFinal[i] - (2*np.pi)
+                    qFinal[i] = qFinal[i] * (-1)
+                else:
+                    qFinal[i] = qFinal[i] % (2*np.pi)
+                    if qFinal[i] > np.pi:
+                        qFinal[i] = qFinal[i] - (2*np.pi)
+        print('Solución encontrada')
+        print(qFinal)
+    except:
+        print('No se encuentra solución')
+        qFinal=[0,0,0]
+        
+    time.sleep(2)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint4, -113*np.pi/180, sim.simx_opmode_oneshot)
+
+    retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0] , sim.simx_opmode_oneshot) 
+    retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
+    time.sleep(1)
+    
+
+    time.sleep(2)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.05618, sim.simx_opmode_oneshot)
+    time.sleep(2)
+
+    CogerItem(True)
+    time.sleep(2)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
+    time.sleep(2) 
+    
+    
+def ir_a_bandeja():
+    
+    x = 0.383
+    y = 0.082
+    z = 0.6618
+    
+    eq1 = 0.2 * cos(theta1) + 0.2 * cos(theta1 + theta2) - y
+    eq2 = 0.2 * sin(theta1) + 0.2 * sin(theta1 + theta2) + x
+    eq3 = 0.105 - d3 - z
+    try:
+        qFinal=nsolve((eq1,eq2,eq3),(theta1,theta2,d3),(1,1,1),prec=5)
+        qFinal[0] = qFinal[0] % (2*np.pi)
+        qFinal[1] = qFinal[1] % (2*np.pi)
+        for i in range(2):
+            if abs(qFinal[i]) > np.pi:
+                if qFinal[i] < 0:
+                    qFinal[i] = qFinal[i] * (-1)
+                    qFinal[i] = qFinal[i] % (2*np.pi)
+                    if qFinal[i] > np.pi:
+                        qFinal[i] = qFinal[i] - (2*np.pi)
+                    qFinal[i] = qFinal[i] * (-1)
+                else:
+                    qFinal[i] = qFinal[i] % (2*np.pi)
+                    if qFinal[i] > np.pi:
+                        qFinal[i] = qFinal[i] - (2*np.pi)
+        print('Solución encontrada')
+        print(qFinal)
+    except:
+        print('No se encuentra solución')
+        qFinal=[0,0,0]
+        
+    time.sleep(2)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0] , sim.simx_opmode_oneshot) 
+    retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint4, -110*np.pi/180, sim.simx_opmode_oneshot)
+
+    time.sleep(3)
+    
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint4, 7*np.pi/180, sim.simx_opmode_oneshot)
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint4, -127, sim.simx_opmode_oneshot)
+
+    time.sleep(3)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.05618, sim.simx_opmode_oneshot)
+    time.sleep(3)
+
+    CogerItem(True)
+    time.sleep(2)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
+    time.sleep(2) 
+    #-----
     for numCard in range(3):
-        retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
-        CogerCarta(True)
+   
+        retCode = sim.simxSetJointTargetPosition(clientID, joint3, 0.08, sim.simx_opmode_oneshot)
+        
         x = -0.152 + (numCard*0.0695)
         print(x)
         y = 0.19
@@ -788,16 +969,66 @@ def Colocar3CartasCentrales():
         time.sleep(2)
         #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
         retCode = sim.simxSetJointTargetPosition(clientID, joint4, -rotationCentro[numCard]*np.pi/180, sim.simx_opmode_oneshot)
-        time.sleep(1)
+        time.sleep(3)
         retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0745, sim.simx_opmode_oneshot)
         time.sleep(2)
         DejarItem()
         time.sleep(1)
         retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
         
+def Colocar3CartasCentrales():
+    for numCard in range(3):
+        CogerCarta(True)
+        #retCode = sim.simxSetJointTargetPosition(clientID, joint3, 0.08, sim.simx_opmode_oneshot)
+        
+        ir_a_flipeador()
+        x = -0.152 + (numCard*0.0695)
+        print(x)
+        y = 0.19
+        #z = 0.2
+        
+        eq1 = 0.2 * cos(theta1) + 0.2 * cos(theta1 + theta2) - y
+        eq2 = 0.2 * sin(theta1) + 0.2 * sin(theta1 + theta2) + x
+        #eq3 = 0.105 - d3 - z
+        try:
+            qFinal=nsolve((eq1,eq2),(theta1,theta2),(1,1),prec=5)
+            for i in range(2):
+                if abs(qFinal[i]) > np.pi:
+                    if qFinal[i] < 0:
+                        qFinal[i] = qFinal[i] * (-1)
+                        qFinal[i] = qFinal[i] % (2*np.pi)
+                        if qFinal[i] > np.pi:
+                            qFinal[i] = qFinal[i] - (2*np.pi)
+                        qFinal[i] = qFinal[i] * (-1)
+                    else:
+                        qFinal[i] = qFinal[i] % (2*np.pi)
+                        if qFinal[i] > np.pi:
+                            qFinal[i] = qFinal[i] - (2*np.pi)
+            print('Solución encontrada')
+            print(qFinal)
+        except:
+            qFinal=nsolve((eq1,eq2,eq3),(theta1,theta2,d3),(1,1.5,1),prec=5)
+            qFinal[0] = qFinal[0] % (2*np.pi)
+            print('Solución encontrada (por suerte)')
+            print(qFinal)
+        time.sleep(1)
+        retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0], sim.simx_opmode_oneshot) 
+        retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
+        time.sleep(2)
+        #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -qFinal[2], sim.simx_opmode_oneshot)
+        retCode = sim.simxSetJointTargetPosition(clientID, joint4, -rotationCentro[numCard]*np.pi/180, sim.simx_opmode_oneshot)
+        time.sleep(3)
+        retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0725, sim.simx_opmode_oneshot)
+        time.sleep(2)
+        DejarItem()
+        time.sleep(1)
+        retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
+        retCode = sim.simxSetJointTargetPosition(clientID, joint4, 7*np.pi/180, sim.simx_opmode_oneshot)
+
 def Colocar4CartaCentral():
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
-    CogerCarta(True)    
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
+    CogerCarta(True)  
+    ir_a_flipeador()
     x = -0.152 + (3*0.0695)
     y = 0.19
     #z = 0.2
@@ -830,15 +1061,17 @@ def Colocar4CartaCentral():
     time.sleep(2)
     retCode = sim.simxSetJointTargetPosition(clientID, joint4, -rotationCentro[3]*np.pi/180, sim.simx_opmode_oneshot)
     time.sleep(1)
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0745, sim.simx_opmode_oneshot)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0715, sim.simx_opmode_oneshot)
     time.sleep(2)
     DejarItem()
     time.sleep(1)
     retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot) 
 # In[66]:
 def Colocar5CartaCentral():
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
-    CogerCarta(True)     
+    
+    #retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
+    CogerCarta(True)
+    ir_a_flipeador()     
     x = -0.152 + (4*0.0695)
     y = 0.19
     z = 0.2
@@ -866,16 +1099,16 @@ def Colocar5CartaCentral():
         print('No se encuentra solución')
         qFinal=[0,0,0]
     
-    time.sleep(1)
+    time.sleep(2)
     retCode = sim.simxSetJointTargetPosition(clientID, joint1, qFinal[0], sim.simx_opmode_oneshot) 
     retCode = sim.simxSetJointTargetPosition(clientID, joint2, qFinal[1], sim.simx_opmode_oneshot)
-    time.sleep(2)
+    time.sleep(3)
     retCode = sim.simxSetJointTargetPosition(clientID, joint4, -rotationCentro[4]*np.pi/180, sim.simx_opmode_oneshot)
-    time.sleep(2)
-    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0745, sim.simx_opmode_oneshot)
-    time.sleep(2)
+    time.sleep(3)
+    retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0725, sim.simx_opmode_oneshot)
+    time.sleep(3)
     DejarItem()
-    time.sleep(1)
+    time.sleep(2)
     retCode = sim.simxSetJointTargetPosition(clientID, joint3, -0.0, sim.simx_opmode_oneshot)
 def darCartaIzquierda(x, y):
     #x = 0.2598  
@@ -1122,3 +1355,35 @@ def ecuaciones(x,y,z):
     eq2 = 0.2*sin(theta1) + 0.2*sin(theta1 + theta2) +x
     eq3 = 0.105 - d3 - z 
     return eq1,eq2,eq3
+
+def flip_carta(c1):
+    for i in range(1,44):
+        #i = 49
+        ret, pos = sim.simxGetObjectPosition(clientID, c1, -1, sim.simx_opmode_blocking)
+        if (i<25) or (i>=25 and i<33 and i%2==0) or (i>=35 and i<39 and i%2==0): 
+            sim.simxSetObjectOrientation(clientID, c1, c1, [0,-4.8*np.pi/180,0], sim.simx_opmode_oneshot)
+        if i<10 and i%2 == 0:
+            sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1]-0.002,pos[2]-0.006], sim.simx_opmode_blocking)
+        elif i >=10 and i<20 and i%2==0:
+            sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1]-0.004,pos[2]], sim.simx_opmode_blocking)
+        if i >=15 and i<20 and i%2==0:
+            sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1]-0.004,pos[2]-0.008], sim.simx_opmode_blocking)
+        elif i >=20 and i<25 and i%2==0:
+            sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1],pos[2]-0.008], sim.simx_opmode_blocking)
+        elif i >=23 and i<25 and i%2==0:
+            sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1]+0.004,pos[2]], sim.simx_opmode_blocking)
+        elif i >=25 and i<35 and i%2==1:
+            sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1],pos[2]-0.0044], sim.simx_opmode_blocking)
+        elif i >=25 and i<35 and i%2==0:
+            sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1]+0.006,pos[2]-0.0044], sim.simx_opmode_blocking)
+        #elif i >=35 and i<39 and i%2==0:
+            #sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1],pos[2]-0.0044], sim.simx_opmode_blocking)
+        if i >=35 and i<39:
+            if i%2==0:
+                sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1]+0.003,pos[2]-0.0044], sim.simx_opmode_blocking)
+            else:
+                sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1]+0.003,pos[2]], sim.simx_opmode_blocking)
+        elif i >=38 and i<44:
+            sim.simxSetObjectPosition(clientID, c1, -1, [pos[0],pos[1]+0.015,pos[2]-0.0028], sim.simx_opmode_blocking)
+        if i>=40 and i<44:
+            sim.simxSetObjectOrientation(clientID, c1, c1, [0,-9*np.pi/180,0], sim.simx_opmode_oneshot)
