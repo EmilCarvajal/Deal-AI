@@ -21,7 +21,8 @@ from Variables_Main import *
 global nJug; nJug = 1
 global dealer; dealer = 1
 
-
+#valor_fichas,posicion = recogerFichasMonton(areas5jug[2] )
+#Colocar3CartasCentrales()
 #imssmi = get_image()
 #--------------------------------------------------
 #---TESTS INICIALES
@@ -30,8 +31,8 @@ global dealer; dealer = 1
 #Colocar4CartaCentral();
 #Colocar5CartaCentral(); Standby()
 #get_image()
-#valor_fichas,posicion = recogerFichasMonton(areas5jug[4] )#areas5jug[0])    # Robot coge fichas del area(aJug)
-#l_cambio = cambiar_fichas_greedy(valor_fichas,1)                    #lista con el cambio
+#valor_fichas,posicion = recogerFichasMonton(areas5jug[1] )#areas5jug[0])    # Robot coge fichas del area(aJug)
+#l_cambio = cambiar_fichas_greedy(valor_fichas,0)                    #lista con el cambio
 #dar_Cambio(l_cambio, posicion) 
 
 #---------------------------
@@ -203,19 +204,20 @@ def main():
             it = players_p.index(next_j) 
             ha_jugado = [False for x in range(1,len(players_p)+1)]
             #--------
-            if Ronda == 0: 
-                sl.hablar(" el jugador " +str(dealers_p[pos_cg])+ " es la ciega grande")
-                sl.hablar("Preparando tablero, no obstaculicen la zona de juego")
+            if Ronda == 0:#a = 0
+                #sl.hablar(" el jugador " +str(dealers_p[pos_cg])+ " es la ciega grande")
+                #sl.hablar("Preparando tablero, no obstaculicen la zona de juego")
                 
                 # ---REPARTICION DE CARTAS M0 ---------      
-                for p in players_p:                   
-                    sl.hablar('DANDO CARTA A JUGADOR '+str(p))
-                    darCartaJugador(pos_j[p-1][0],pos_j[p-1][1], pos_j[p-1][2])
+                #for p in players_p:                   
+                 #   sl.hablar('DANDO CARTA A JUGADOR '+str(p))
+                  #  darCartaJugador(pos_j[p-1][0],pos_j[p-1][1], pos_j[p-1][2])
                 Standby()   
     
             elif Ronda == 1: 
-                sl.hablar("Atencion!, Colocando cartas centrales")
-                Colocar3CartasCentrales(); Standby()
+                #sl.hablar("Atencion!, Colocando cartas centrales")
+                #Colocar3CartasCentrales(); 
+                Standby()
             elif Ronda == 2: 
                 sl.hablar("Atencion!, Colocando carta 4")
                 quemarCarta();Colocar4CartaCentral(); Standby()
@@ -269,7 +271,7 @@ def main():
                     if txt == "cambio a la alta": modo = 1
                     main_cambio(modo,actual_j)
                     time.sleep(1); Standby()
-                    
+                    txt = 0
                     while txt not in opciones:
                         txt = sl.escucharJugador()
 
@@ -336,7 +338,7 @@ def main():
                 
             if Ronda ==3: #Ronda Final
                 sl.hablar("Jugadores, muestren sus cartas ")
-                time.sleep(15) # -9.0006e+01   Gamma
+                time.sleep(30) # -9.0006e+01   Gamma
                 ganador, combo_ganador = decirGanador(players_p) #modulo VC+ Algoritmo combinaciones (Jofre)
                 sl.hablar("EL GANADOR es el jugador "+str(ganador))
                 print("Ganador de Ronda:", ganador )
